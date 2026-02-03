@@ -1,5 +1,6 @@
 import "./homePage.css";
 import { Header } from "../components/Header";
+import { CubeCanvas } from "../components/TesseractCanvas";
 
 export function HomePage() {
   return (
@@ -23,6 +24,7 @@ export function HomePage() {
               </p>
             </div>
           </div>
+          <CubeCanvas/>
         </div>
       </section>
       <Header />
