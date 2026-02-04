@@ -1,4 +1,6 @@
 import { Header } from "../components/Header";
+import { BlogPost } from "../components/BlogPost";
+import { blogPosts } from "../testData";
 import "./blog.css";
 
 export function Blog() {
@@ -6,17 +8,14 @@ export function Blog() {
     <>
       <title>Blog!</title>
       <Header></Header>
-      <div className="article">
-        <div className="thumbnail">
-          <img src="" alt="" />
-        </div>
-        <div className="title">
-          <h1>Título</h1>
-        </div>
-        <div className="text">
-          <p>Texto</p>
-        </div>
-      </div>
+      {blogPosts.map((post, index) => (
+        <BlogPost
+          key={index}
+          title={post.title}
+          text={post.text}
+          imageSrc={post.imageSrc}
+        />
+      ))}
     </>
   );
 }

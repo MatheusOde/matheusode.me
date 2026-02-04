@@ -1,4 +1,5 @@
 import "./header.css";
+import { NavLink } from "react-router";
 function openPopup() {
   const popup = document.getElementById("contact-popup");
   if (!popup) return;
@@ -25,21 +26,21 @@ export function Header() {
     <>
       <div className="navigation-bar">
         <div className="logo">
-          <a href="/"> MatheusOde </a>
+          <NavLink to="/"> MatheusOde </NavLink>
         </div>
         <div className="menu">
-          <a href="/" id="home-btn">
+          <NavLink to="/" id="home-btn">
             Home
-          </a>
-          <a href="#projects" id="projects-btn">
+          </NavLink>
+          <NavLink to="/#projects" id="projects-btn">
             Projects
-          </a>
-          <a href="#skills" id="skills-btn">
+          </NavLink>
+          <NavLink to="/#skills" id="skills-btn">
             Skills
-          </a>
-          <a href="/blog" id="blog-btn">
+          </NavLink>
+          <NavLink to="/blog" id="blog-btn">
             Blog
-          </a>
+          </NavLink>
           <a id="contact-btn" onClick={openPopup}>
             Contact
           </a>
@@ -59,21 +60,19 @@ export function Header() {
             alt="menu button"
           />
           <div className="dropdown" id="dropdown">
-            <a href="/" id="home-btn">
+            <NavLink to="/" id="home-btn">
               Home
-            </a>
-            <a href="#projects" id="projects-btn">
+            </NavLink>
+            <NavLink to="/#projects" id="projects-btn">
               Projects
-            </a>
-            <a href="#skills" id="skills-btn">
+            </NavLink>
+            <NavLink to="/#skills" id="skills-btn">
               Skills
-            </a>
-            <a href="/blog" id="blog-btn">
+            </NavLink>
+            <NavLink to="/blog" id="blog-btn">
               Blog
-            </a>
-            <a href="#" id="contact-btn">
-              Contact
-            </a>
+            </NavLink>
+            <a id="contact-btn">Contact</a>
           </div>
         </button>
       </div>
