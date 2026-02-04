@@ -7,7 +7,7 @@ function closePopup() {
   document.getElementById("contact-popup").style.display = "none";
 }
 function switchMenu() {
-        document.getElementById("dropdown").classList.toggle("show");
+  document.getElementById("dropdown").classList.toggle("show");
 }
 
 export function Header() {
@@ -27,6 +27,9 @@ export function Header() {
           <a href="#skills" id="skills-btn">
             Skills
           </a>
+          <a href="#" id="blog-btn">
+              Blog
+            </a>
           <a id="contact-btn" onClick={openPopup}>
             Contact
           </a>
@@ -54,6 +57,9 @@ export function Header() {
             </a>
             <a href="#skills" id="skills-btn">
               Skills
+            </a>
+            <a href="#" id="blog-btn">
+              Blog
             </a>
             <a href="#" id="contact-btn">
               Contact

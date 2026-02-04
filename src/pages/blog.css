@@ -1,0 +1,30 @@
+h1 {
+  color: aliceblue;
+}
+p {
+  color: aliceblue;
+}
+.article {
+  display: grid;
+  place-items: center;
+  width: 100vw;
+}
+.thumbnail {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  width: 40vw;
+  height: 20vh;
+}
+.text {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  width: 40vw;
+}
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  width: 40vw;
+}
