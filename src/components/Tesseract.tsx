@@ -111,6 +111,7 @@ export function initCubeScene(canvas: HTMLCanvasElement) {
 
     resize();
     const { width, height } = canvas;
+    if (!ctx) throw new Error("2D context not supported");
 
     ctx.fillStyle = "#000";
     ctx.fillRect(0, 0, width, height);

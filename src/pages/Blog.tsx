@@ -1,9 +1,10 @@
 import { Header } from "../components/Header";
-import "./blog.css"
+import "./blog.css";
 
 export function Blog() {
   return (
     <>
+      <title>Blog!</title>
       <Header></Header>
       <div className="article">
         <div className="thumbnail">

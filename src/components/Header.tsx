@@ -1,13 +1,23 @@
 import "./header.css";
 function openPopup() {
-  document.getElementById("contact-popup").style.display = "block";
+  const popup = document.getElementById("contact-popup");
+  if (!popup) return;
+
+  popup.style.display = "block";
 }
 
 function closePopup() {
-  document.getElementById("contact-popup").style.display = "none";
+  const popup = document.getElementById("contact-popup");
+  if (!popup) return;
+
+  popup.style.display = "none";
 }
+
 function switchMenu() {
-  document.getElementById("dropdown").classList.toggle("show");
+  const dropdown = document.getElementById("dropdown");
+  if (!dropdown) return;
+
+  dropdown.classList.toggle("show");
 }
 
 export function Header() {
@@ -15,10 +25,10 @@ export function Header() {
     <>
       <div className="navigation-bar">
         <div className="logo">
-          <a> MatheusOde </a>
+          <a href="/"> MatheusOde </a>
         </div>
         <div className="menu">
-          <a href="#introduction" id="home-btn">
+          <a href="/" id="home-btn">
             Home
           </a>
           <a href="#projects" id="projects-btn">
@@ -27,9 +37,9 @@ export function Header() {
           <a href="#skills" id="skills-btn">
             Skills
           </a>
-          <a href="#" id="blog-btn">
-              Blog
-            </a>
+          <a href="/blog" id="blog-btn">
+            Blog
+          </a>
           <a id="contact-btn" onClick={openPopup}>
             Contact
           </a>
@@ -49,7 +59,7 @@ export function Header() {
             alt="menu button"
           />
           <div className="dropdown" id="dropdown">
-            <a href="#introduction" id="home-btn">
+            <a href="/" id="home-btn">
               Home
             </a>
             <a href="#projects" id="projects-btn">
@@ -58,7 +68,7 @@ export function Header() {
             <a href="#skills" id="skills-btn">
               Skills
             </a>
-            <a href="#" id="blog-btn">
+            <a href="/blog" id="blog-btn">
               Blog
             </a>
             <a href="#" id="contact-btn">
