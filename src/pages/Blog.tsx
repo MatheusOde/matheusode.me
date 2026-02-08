@@ -1,7 +1,6 @@
 import { Header } from "../components/Header";
 import { BlogPost } from "../components/BlogPost";
 import { blogPosts } from "../testData";
-import "./blog.css";
 
 export function Blog() {
   return (

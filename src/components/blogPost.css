@@ -1,9 +1,3 @@
-h1 {
-  color: aliceblue;
-}
-p {
-  color: aliceblue;
-}
 .article {
   display: grid;
   place-items: center;
@@ -21,10 +15,12 @@ p {
   justify-content: center;
   align-items: top;
   width: 40vw;
+  color: var(--color-surface-light);
 }
 .title {
   display: flex;
   justify-content: center;
   align-items: top;
   width: 40vw;
+  color: var(--color-surface-light);
 }

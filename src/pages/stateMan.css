@@ -1,12 +1,12 @@
 * {
   box-sizing: border-box;
-  font-family: system-ui, sans-serif;
+  font-family: var(--font-family-base);
 }
 
 body {
   margin: 0;
-  background: #0f172a;
-  color: #e5e7eb;
+  background: var(--color-background-dark);
+  color: var(--color-surface-light);
 }
 
 .container {
@@ -20,7 +20,7 @@ h1 {
 }
 
 .card {
-  background: #020617;
+  background: var(--color-background-dark);
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 1.5rem;
@@ -36,14 +36,14 @@ label {
 input {
   padding: 0.5rem;
   border-radius: 4px;
-  border: 1px solid #334155;
-  background: #020617;
-  color: #e5e7eb;
+  border: 1px solid var(--color-surface-default);
+  background: var(--color-background-dark);
+  color: var(--color-surface-light);
 }
 
 input:focus {
   outline: none;
-  border-color: #38bdf8;
+  border-color: var(--color-brand-primary);
 }
 
 .actions {
@@ -55,18 +55,18 @@ button {
   padding: 0.5rem 0.75rem;
   border: none;
   border-radius: 4px;
-  background: #38bdf8;
-  color: #020617;
+  background: var(--color-brand-primary);
+  color: var(--color-background-dark);
   cursor: pointer;
 }
 
 button:disabled {
-  background: #334155;
+  background: var(--color-surface-default);
   cursor: not-allowed;
 }
 
 .debug pre {
-  background: #020617;
+  background: var(--color-background-dark);
   padding: 0.75rem;
   border-radius: 4px;
   overflow-x: auto;

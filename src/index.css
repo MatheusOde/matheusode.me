@@ -1,12 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-:root {
-  --neon-purple: rgb(112, 0, 187);
-  --neon-purple-effect: 0 0 2px rgba(112, 0, 187, 0.452),
-    0 0 5px rgba(112, 0, 187, 0.493), 0 0 10px rgb(112, 0, 187);
-  --neon-blue: rgb(62, 62, 255);
-  --neon-blue-effect: 0 0 2px rgba(41, 41, 255, 0.788),
-    0 0 5px rgba(48, 48, 248, 0.719), 0 0 10px rgb(48, 48, 252);
-}
+@import url("./designsystem.css");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap");
 
 * {
   padding: 0;
@@ -16,7 +9,7 @@
 html {
   scroll-behavior: smooth;
   scroll-snap-type: y;
-  background-color: #000;
+  background-color: var(--color-background-page);
   overflow-x: hidden;
 }
 
@@ -32,9 +25,9 @@ section {
   position: sticky;
   top: 0;
   height: 5vh;
-  padding-left: 40px;
+  padding-left: var(--space-page-padding);
   padding-right: 30px;
-  background-color: #000;
+  background-color: var(--color-background-dark);
   box-shadow: 0 0 20px rgb(0, 0, 0);
   justify-content: space-between;
   align-items: center;
@@ -45,8 +38,7 @@ section {
   padding-left: 2vw;
   cursor: pointer;
   text-decoration: none;
-  color: #5626c4;
-  text-shadow: var(--neon-blue-effect);
+  color: var(--color-brand-primary);
   transition: 0.25s;
 }
 .navigation-bar .logo:hover {
@@ -54,14 +46,14 @@ section {
   transition: 0.25s;
 }
 .navigation-bar .menu a {
-  color: lightgray;
+  color: var(--color-surface-light);
   text-decoration: none;
   transition: 0.25s;
   padding-left: 1em;
 }
 .navigation-bar .menu a:hover {
   transform: scale3d(1.2, 1.4, 1.2);
-  text-shadow: var(--neon-blue-effect);
+  color: var(--color-brand-secondary);
   transition: 0.25s;
   cursor: pointer;
 }
@@ -71,10 +63,10 @@ section {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #c9b6ff;
+  background-color: var(--color-surface-light);
   padding: 3%;
   border-radius: 20px;
-  border: 5px solid #6846a7;
+  border: 5px solid var(--color-brand-primary);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   z-index: 1;
 }
@@ -86,10 +78,10 @@ section {
   cursor: pointer;
 }
 .navigation-bar .menu .popup h1 {
-  font-size: 30px;
+  font-size: var(--text-size-section);
 }
 .navigation-bar .menu .popup p {
-  font-size: 20px;
+  font-size: var(--text-size-body);
 }
 .navigation-bar .dropdown-btn {
   display: none;
@@ -98,7 +90,7 @@ section {
 .introduction {
   display: flex;
   align-items: center;
-  color: white;
+  color: var(--color-text-primary);
   height: 100vh;
   margin: 0;
   padding: 0;
@@ -118,9 +110,8 @@ section {
 }
 .introduction .intro-elements .photo {
   z-index: 998;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border: #ffffff solid 0.25em;
+  object-fit: cover;
+  border: var(--color-surface-light) solid 0.25em;
   box-shadow: #0e0013 0 0 5em;
   width: 30vw;
   height: 30vw;
@@ -131,21 +122,20 @@ section {
   z-index: 998;
   height: auto;
   width: 50%;
-  font-family: "Roboto", sans-serif;
+  font-family: var(--font-family-base);
   align-items: center;
   justify-content: space-between;
 }
 .introduction .intro-elements .about .about-title {
-  font-size: 4em;
-  font-weight: bold;
+  font-size: var(--text-size-hero);
+  font-weight: var(--font-weight-regular);
   margin: 0;
 }
 .introduction .intro-elements .about .about-title span {
-  color: var(--neon-blue);
-  text-shadow: var(--neon-blue-effect);
+  color: var(--color-brand-secondary);
 }
 .introduction .intro-elements .about .about-description {
-  color: #c3c4d5;
+  color: var(--color-surface-light);
   text-shadow: 3px 3px 3px #000000, 3px 3px 3px #000000, 3px 3px 5px #000000, 3px 3px 10px #000000;
   font-size: 1.25em;
   text-align: center;
@@ -153,8 +143,8 @@ section {
 }
 
 .story {
-  background-color: #575d68;
-  color: #dddddd;
+  background-color: var(--color-surface-default);
+  color: var(--color-surface-light);
   height: 100vh;
   display: flex;
   align-items: center;
@@ -173,21 +163,20 @@ section {
 }
 
 .projects {
-  background-color: #1f3044;
+  background-color: var(--color-background-dark);
   height: 100vh;
-  color: #c3c4d5;
+  color: var(--color-surface-light);
   padding-left: 3vw;
 }
 .projects h1 {
   margin: 0;
   padding-top: 7vh;
   padding-bottom: 4vh;
-  font-size: 3em;
-  font-weight: bold;
+  font-size: var(--text-size-section);
+  font-weight: var(--font-weight-regular);
 }
 .projects h1 span {
-  color: var(--neon-blue);
-  text-shadow: var(--neon-blue-effect);
+  color: var(--color-brand-secondary);
 }
 .projects ul {
   display: grid;
@@ -199,25 +188,23 @@ section {
 }
 .projects ul .imagesGrid {
   padding-bottom: 2em;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .projects ul .imagesGrid p {
   margin-left: 1vw;
-  font-size: 1em;
+  font-size: var(--text-size-body);
   max-width: 20vw;
   padding-top: 1em;
 }
 .projects ul .imagesGrid a {
   text-decoration: none;
-  font-size: 1em;
+  font-size: var(--text-size-body);
   max-width: 20vw;
 }
 .projects ul .imagesGrid img {
-  -o-object-fit: cover;
-     object-fit: cover;
-  border: var(--neon-blue);
-  box-shadow: var(--neon-blue-effect);
+  object-fit: cover;
+  border: 2px solid var(--color-brand-secondary);
+  box-shadow: 0 0 10px var(--color-brand-secondary);
   width: 20vw;
   height: 11vw;
 }
@@ -227,7 +214,7 @@ section {
   height: 97vh;
 }
 .last-section .skills {
-  background-color: #111924;
+  background-color: var(--color-background-dark);
   height: 97vh;
 }
 .last-section .skills h1 {
@@ -235,13 +222,12 @@ section {
   padding-left: 3vw;
   padding-top: 7vh;
   padding-bottom: 4vh;
-  color: #dddddd;
-  font-size: 3em;
-  font-weight: bold;
+  color: var(--color-surface-light);
+  font-size: var(--text-size-section);
+  font-weight: var(--font-weight-regular);
 }
 .last-section .skills h1 span {
-  color: var(--neon-purple);
-  text-shadow: var(--neon-purple-effect);
+  color: var(--color-brand-primary);
 }
 .last-section .skills ul {
   display: grid;
@@ -252,22 +238,19 @@ section {
 .last-section .skills ul .skillsGrid {
   margin-left: 1vw;
   margin-right: 1vw;
-  -o-object-fit: scale-down;
-     object-fit: scale-down;
+  object-fit: scale-down;
   padding-bottom: 10vh;
 }
 .last-section .skills ul .skillsGrid img {
-  -o-object-fit: scale-down;
-     object-fit: scale-down;
+  object-fit: scale-down;
   width: 10vw;
   height: 6vw;
 }
 
 .contact-section {
-  height: -moz-max-content;
   height: max-content;
   display: flex;
-  background-color: #000;
+  background-color: var(--color-background-dark);
   overflow: hidden;
 }
 .contact-section .contact {
@@ -311,8 +294,8 @@ section {
   }
   .navigation-bar .dropdown-btn {
     display: inline-block;
-    background-color: #111924;
-    border-color: #111924;
+    background-color: var(--color-background-dark);
+    border-color: var(--color-background-dark);
   }
   .navigation-bar .dropdown-btn .menu-btn {
     transform: scale3d(0.7, 0.7, 0.7);
@@ -326,7 +309,7 @@ section {
   .navigation-bar .dropdown-btn .dropdown {
     display: none;
     position: absolute;
-    background-color: #000;
+    background-color: var(--color-background-dark);
     min-height: 400px;
     min-width: 200px;
     right: 1px;
@@ -339,9 +322,8 @@ section {
   .navigation-bar .dropdown-btn .dropdown a {
     padding: 30px;
     text-decoration-line: none;
-    color: var(--neon-blue);
-    text-shadow: var(--neon-purple-effect);
-    font-weight: bold;
+    color: var(--color-brand-secondary);
+    font-weight: var(--font-weight-regular);
   }
   .navigation-bar .dropdown-btn .dropdown.show {
     display: grid;
@@ -379,7 +361,6 @@ section {
   }
   .story .left-column {
     display: grid;
-    width: -moz-max-content;
     width: max-content;
     height: 100%;
     padding-top: 10%;
@@ -396,7 +377,6 @@ section {
     width: 100%;
   }
   .projects-section .projects {
-    height: -moz-max-content;
     height: max-content;
   }
   .projects-section .projects ul {
@@ -442,8 +422,7 @@ section {
     padding: 2vh;
   }
   .last-section .skills ul .skillsGrid img {
-    -o-object-fit: scale-down;
-       object-fit: scale-down;
+    object-fit: scale-down;
     width: 20vw;
     height: 20vw;
   }

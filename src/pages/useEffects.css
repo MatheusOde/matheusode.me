@@ -1,12 +1,12 @@
 * {
   box-sizing: border-box;
-  font-family: system-ui, sans-serif;
+  font-family: var(--font-family-base);
 }
 
 body {
   margin: 0;
-  background: #020617;
-  color: #e5e7eb;
+  background: var(--color-background-dark);
+  color: var(--color-surface-light);
 }
 
 .container {
@@ -20,7 +20,7 @@ h1 {
 }
 
 .card {
-  background: #0f172a;
+  background: var(--color-surface-default);
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 1.5rem;
@@ -29,6 +29,6 @@ h1 {
 .box {
   padding: 0.75rem;
   margin-top: 0.5rem;
-  background: #020617;
+  background: var(--color-background-dark);
   border-radius: 4px;
 }

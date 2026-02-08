@@ -1,0 +1,136 @@
+/* =========================================================
+   Design System — Tokens & Primitives
+   Source: Desktop.tsx
+   ========================================================= */
+
+/* =========================
+   Color Tokens
+   ========================= */
+:root {
+  /* Core */
+  --color-background-page: #ffffff;
+  --color-background-dark: #282a36;
+
+  /* Surfaces */
+  --color-surface-default: #44475a;
+  --color-surface-light: #f8f8f2;
+
+  /* Brand / Personality */
+  --color-brand-primary: #716fe4;
+  --color-brand-secondary: #974ccc;
+  --color-brand-tertiary: #db3235;
+
+  /* Text */
+  --color-text-primary: #000000;
+}
+
+/* =========================
+   Typography Tokens
+   ========================= */
+:root {
+  --font-family-base: "Inter", sans-serif;
+
+  --font-weight-regular: 400;
+
+  /* Font Sizes */
+  --text-size-body: 16px;
+  --text-size-card: 32px;
+  --text-size-section: 36px;
+  --text-size-hero: 48px;
+
+  /* Letter Spacing */
+  --tracking-normal: 0;
+  --tracking-tight: -0.5px;
+}
+
+/* =========================
+   Spacing & Sizing Tokens
+   ========================= */
+:root {
+  /* Fixed Blocks */
+  --size-block-md: 141px;
+
+  /* Page */
+  --space-page-padding: 40px;
+}
+
+/* =========================
+   Base Primitives
+   ========================= */
+
+/* Page Canvas */
+.ds-page {
+  background-color: var(--color-background-page);
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Surface */
+.ds-surface {
+  background-color: var(--color-surface-default);
+}
+
+.ds-surface--light {
+  background-color: var(--color-surface-light);
+}
+
+.ds-surface--dark {
+  background-color: var(--color-background-dark);
+}
+
+/* Fixed Block */
+.ds-block {
+  width: var(--size-block-md);
+  height: var(--size-block-md);
+}
+
+/* =========================
+   Brand / Personality Blocks
+   ========================= */
+.ds-brand-primary {
+  background-color: var(--color-brand-primary);
+}
+
+.ds-brand-secondary {
+  background-color: var(--color-brand-secondary);
+}
+
+.ds-brand-tertiary {
+  background-color: var(--color-brand-tertiary);
+}
+
+/* =========================
+   Typography Primitives
+   ========================= */
+.ds-text {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-primary);
+  line-height: normal;
+  font-style: normal;
+}
+
+/* Body */
+.ds-text-body {
+  font-size: var(--text-size-body);
+  letter-spacing: var(--tracking-normal);
+}
+
+/* Card */
+.ds-text-card {
+  font-size: var(--text-size-card);
+  letter-spacing: var(--tracking-tight);
+}
+
+/* Section */
+.ds-text-section {
+  font-size: var(--text-size-section);
+  letter-spacing: var(--tracking-tight);
+}
+
+/* Hero */
+.ds-text-hero {
+  font-size: var(--text-size-hero);
+  letter-spacing: var(--tracking-tight);
+}

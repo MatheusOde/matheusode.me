@@ -4,7 +4,8 @@ import { StateManagement } from "./pages/StateManagement";
 import { UseEffects } from "./pages/UseEffects";
 
 import { Routes, Route } from "react-router";
-import "./App.css";
+import "./index.css";
+import "./designsystem.css";
 
 function App() {
   return (
