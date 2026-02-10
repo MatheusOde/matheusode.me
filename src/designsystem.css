@@ -9,19 +9,19 @@
 :root {
   /* Core */
   --color-background-page: #ffffff;
-  --color-background-dark: #282a36;
+  --color-background-dark: #0B0E14;
 
   /* Surfaces */
-  --color-surface-default: #44475a;
+  --color-surface-default: #151A24;
   --color-surface-light: #f8f8f2;
 
   /* Brand / Personality */
-  --color-brand-primary: #716fe4;
-  --color-brand-secondary: #974ccc;
-  --color-brand-tertiary: #db3235;
+  --color-brand-primary: #7C6FF1;
+  --color-brand-secondary: #4DA3FF;
+  --color-brand-tertiary: #FF5C5C;
 
   /* Text */
-  --color-text-primary: #000000;
+  --color-text-primary: #E6E9F0;
 }
 
 /* =========================
