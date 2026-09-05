@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../config/site';
+---
+<BaseLayout title="About" description="About Matheus Odebrecht, a full-stack software engineer focused on systems integration and business alignment.">
+  <header class="page-header"><p class="eyebrow">About / Perspective</p><h1>Software is never just software.</h1><p class="lead">I work at the intersection of applications, data, operations, and the people responsible for making a process run.</p></header>
+  <article class="prose">
+    <p>My work is grounded in full-stack engineering and systems integration: understanding a business need, making system boundaries explicit, and delivering software that fits the surrounding operation.</p>
+    <p>That perspective comes from working across software development, enterprise systems, data, and research. It keeps the technical solution connected to the decisions and workflows it is meant to support.</p>
+    <h2>Working principles</h2>
+    <ul><li>Make the problem and its constraints visible before choosing a solution.</li><li>Treat interfaces and data as products that deserve care.</li><li>Prefer clear, maintainable delivery over impressive complexity.</li></ul>
+  </article>
+  <section class="section split-section" aria-labelledby="capabilities-title"><div><p class="eyebrow">Capabilities</p><h2 id="capabilities-title">A systems view of engineering.</h2></div><div class="prose"><p>Full-stack applications, integrations, data workflows, and the conversations that keep them aligned with operations.</p><a class="text-link" href={site.linkedin}>Connect on LinkedIn <span aria-hidden="true">↗</span></a></div></section>
+</BaseLayout>

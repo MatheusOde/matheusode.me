@@ -8,6 +8,12 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+dist/
+.astro/
+.vite/
+playwright-report/
+test-results/
+.lighthouseci/
 dist-ssr
 *.local
 

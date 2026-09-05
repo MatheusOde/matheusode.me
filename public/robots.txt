@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://matheusode.me/sitemap-index.xml

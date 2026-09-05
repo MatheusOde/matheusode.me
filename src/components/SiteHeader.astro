@@ -1,0 +1,49 @@
+---
+import NavLinks from './NavLinks.astro';
+---
+<header class="mobile-header">
+  <div class="mobile-bar"><a href="/" class="mobile-identity">Matheus Odebrecht<span aria-hidden="true">.</span></a><button id="menu-open" hidden aria-expanded="false" aria-controls="mobile-menu">Menu <span aria-hidden="true">☰</span></button></div>
+  <nav id="mobile-fallback" aria-label="Mobile navigation"><NavLinks /></nav>
+  <dialog id="mobile-menu" aria-labelledby="menu-title">
+    <div class="drawer-heading"><h2 id="menu-title">Navigation</h2><button id="menu-close" aria-label="Close menu">Close <span aria-hidden="true">×</span></button></div>
+    <nav aria-label="Mobile navigation"><NavLinks /></nav>
+  </dialog>
+</header>
+<script>
+  const drawer = document.querySelector<HTMLDialogElement>('#mobile-menu');
+  const opener = document.querySelector<HTMLButtonElement>('#menu-open');
+  const closer = document.querySelector<HTMLButtonElement>('#menu-close');
+  const fallback = document.querySelector<HTMLElement>('#mobile-fallback');
+  if (drawer && opener && closer && fallback && typeof drawer.showModal === 'function') {
+    fallback.hidden = true;
+    opener.hidden = false;
+    opener.addEventListener('click', () => {
+      drawer.showModal();
+      opener.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    });
+    closer.addEventListener('click', () => drawer.close());
+    drawer.addEventListener('click', (event) => { if (event.target === drawer) drawer.close(); });
+    drawer.addEventListener('close', () => {
+      opener.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      opener.focus();
+    });
+    window.matchMedia('(min-width: 768px)').addEventListener('change', (event) => {
+      if (event.matches && drawer.open) drawer.close();
+    });
+  }
+</script>
+<style>
+  .mobile-header { display: none; border-bottom: 1px solid var(--border); background: var(--surface); }
+  .mobile-bar { display: flex; align-items: center; justify-content: space-between; gap: .6rem; padding: .8rem 1.25rem; }
+  .mobile-identity { text-decoration: none; font-size: .85rem; font-weight: 600; }
+  .mobile-identity span { color: var(--accent); }
+  button { display: flex; gap: .65rem; align-items: center; min-height: 44px; background: transparent; border: 1px solid var(--border); color: var(--text); padding: .45rem .65rem; border-radius: .35rem; font-size: .85rem; }
+  #mobile-fallback { padding: 0 1.25rem 1rem; }
+  dialog { margin: 0 0 0 auto; width: min(21rem, 100%); height: 100%; max-height: 100%; border: 0; border-left: 1px solid var(--border); background: var(--surface); color: var(--text); padding: 1.5rem; }
+  dialog::backdrop { background: rgb(0 0 0 / .65); }
+  .drawer-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 2rem; }
+  h2 { font-size: 1.1rem; margin: 0; }
+  @media (max-width: 767px) { .mobile-header { display: block; } }
+</style>

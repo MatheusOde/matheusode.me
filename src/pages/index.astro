@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../config/site';
+import { getCollection } from 'astro:content';
+import { isPublishedWork, isPublishedWriting, sortByPublishedDate } from '../lib/content';
+const work = sortByPublishedDate(await getCollection('work', ({data}) => isPublishedWork(data) && data.featured)).slice(0,3);
+const writing = sortByPublishedDate(await getCollection('writing', ({data}) => isPublishedWriting(data) && data.featured)).slice(0,3);
+---
+<BaseLayout title="Home" description={site.description}>
+  <header class="page-header hero-header">
+    <p class="eyebrow">Full-stack engineering / Systems integration</p>
+    <h1>{site.headline}</h1>
+    <p class="lead">I connect applications, data, and operations so complex business needs become software that people can rely on.</p>
+    <div class="hero-motif" aria-hidden="true"><img src="/images/systems-motif.svg" alt="" width="520" height="250" /></div>
+    <div class="actions">
+      <a class="button primary" href="/work/">View selected work <span aria-hidden="true">→</span></a>
+      <a class="button" href="/contact/">Contact me</a>
+    </div>
+  </header>
+
+  {work.length > 0 && <section class="section" aria-labelledby="selected-work"><p class="eyebrow">Selected work</p><h2 id="selected-work">Systems in practice.</h2><div class="card-grid">{work.map(entry => <article class="card"><p class="eyebrow">{entry.data.problemDomain}</p><h3><a href={`/work/${entry.id}/`} data-event="work_case_opened">{entry.data.title}</a></h3><p>{entry.data.summary}</p></article>)}</div></section>}
+  {writing.length > 0 && <section class="section" aria-labelledby="selected-writing"><p class="eyebrow">Selected writing</p><h2 id="selected-writing">Ideas worth examining.</h2><div class="card-grid">{writing.map(entry => <article class="card"><h3><a href={`/writing/${entry.id}/`} data-event="article_opened">{entry.data.title}</a></h3><p>{entry.data.summary}</p></article>)}</div></section>}
+  <section class="section credibility" aria-labelledby="credibility-title">
+    <p class="eyebrow">The useful middle</p>
+    <h2 id="credibility-title">Where software meets the way a business works.</h2>
+    <div class="card-grid principles-grid">
+      <article class="card"><p class="eyebrow">01 / Understand</p><h3>Business context</h3><p>Start with the decisions, constraints, and handoffs behind a request—not only the feature list.</p></article>
+      <article class="card"><p class="eyebrow">02 / Connect</p><h3>Systems and data</h3><p>Make boundaries, interfaces, and data flows clear across applications and the teams that own them.</p></article>
+      <article class="card"><p class="eyebrow">03 / Deliver</p><h3>Practical software</h3><p>Build maintainable full-stack applications and integrations that fit real operations and can evolve.</p></article>
+    </div>
+  </section>
+
+  <section class="section split-section" aria-labelledby="contact-title">
+    <div><p class="eyebrow">A good conversation starts here</p><h2 id="contact-title">What needs to connect?</h2></div>
+    <div class="prose"><p>Tell me about the problem, the systems involved, and the outcome you need. That is enough to begin a useful conversation.</p><a class="button" href="/contact/">Get in touch <span aria-hidden="true">↗</span></a></div>
+  </section>
+</BaseLayout>

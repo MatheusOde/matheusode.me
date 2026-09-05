@@ -1,0 +1,19 @@
+---
+import { navigation } from '../config/site';
+const path = Astro.url.pathname;
+---
+<ul class="nav-links">
+  {navigation.map(({ href, label, icon }) => (
+    <li><a href={href} aria-label={label} title={label} aria-current={(href === '/' ? path === '/' : path.startsWith(href)) ? 'page' : undefined}>
+      <span class="nav-icon" aria-hidden="true">{icon}</span><span class="nav-label">{label}</span>
+    </a></li>
+  ))}
+</ul>
+<style>
+  .nav-links { list-style: none; padding: 0; margin: 0; display: grid; gap: .3rem; }
+  a { display: flex; gap: .9rem; align-items: center; min-height: 44px; padding: .55rem .8rem; text-decoration: none; color: var(--text-secondary); border-radius: .35rem; font-size: .9rem; }
+  a:hover { background: var(--surface-raised); color: var(--text); }
+  a[aria-current] { color: var(--accent); background: var(--accent-surface); font-weight: 600; }
+  .nav-icon { width: 1.1rem; text-align: center; font-size: 1.2rem; line-height: 1; flex-shrink: 0; }
+  :global(.sidebar-collapsed .site-sidebar .nav-label) { display: none; }
+</style>

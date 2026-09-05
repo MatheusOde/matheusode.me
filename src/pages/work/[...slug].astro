@@ -1,0 +1,14 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { isPublishedWork } from '../../lib/content';
+export async function getStaticPaths() {return (await getCollection('work', ({data}) => isPublishedWork(data))).map(entry => ({params:{slug:entry.id},props:{entry}}));}
+const {entry}=Astro.props;
+const {Content}=await render(entry);
+---
+<BaseLayout title={entry.data.seoTitle || entry.data.title} description={entry.data.seoDescription || entry.data.summary}>
+  <header class="page-header"><a href="/work/">← Work</a><p class="eyebrow">{entry.data.problemDomain}</p><h1>{entry.data.title}</h1><p class="lead">{entry.data.summary}</p></header>
+  <dl class="section"><dt>Responsibility</dt><dd>{entry.data.role}</dd><dt>Systems</dt><dd>{entry.data.systems.join(', ')}</dd><dt>Outcome</dt><dd>{entry.data.verifiedOutcome}</dd></dl>
+  <article class="prose"><Content /></article>
+  <section class="section"><h2>Working through a similar problem?</h2><a href="/contact/">Let’s talk about your systems →</a></section>
+</BaseLayout>

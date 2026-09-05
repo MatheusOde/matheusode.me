@@ -1,0 +1,11 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { isPublishedWork, sortByPublishedDate } from '../../lib/content';
+const entries = sortByPublishedDate(await getCollection('work', ({data}) => isPublishedWork(data)));
+---
+<BaseLayout title="Work" description="Full-stack applications and systems integration for complex business needs.">
+  <header class="page-header"><p class="eyebrow">Work / Systems in context</p><h1>Software is part of<br />a bigger system.</h1><p class="lead">Applications, data, and the people who depend on them. That is the context I bring to engineering conversations.</p></header>
+  {entries.length > 0 ? <section class="section card-grid" aria-label="Case studies">{entries.map(entry => <article class="card"><p class="eyebrow">{entry.data.problemDomain}</p><h2><a href={`/work/${entry.id}/`} data-event="work_case_opened">{entry.data.title}</a></h2><p>{entry.data.summary}</p><p>{entry.data.role}</p><p>{entry.data.verifiedOutcome}</p></article>)}</section> : <section class="section prose"><h2>Start with the problem.</h2><p>If you are evaluating a full-stack application or an integration between business systems, tell me what needs to work together and what is getting in the way.</p><p>For work-specific context, <a href="/contact/">start a conversation</a>. Confidential details belong in the right conversation.</p></section>}
+  <section class="section"><p class="eyebrow">A useful starting point</p><h2>What needs to connect?</h2><p>Share the business context, the systems involved, and the outcome you need.</p><a class="button" href="/contact/">Discuss your project →</a></section>
+</BaseLayout>

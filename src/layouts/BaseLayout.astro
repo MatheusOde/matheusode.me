@@ -1,0 +1,21 @@
+---
+import SeoHead from '../components/SeoHead.astro';
+import SiteSidebar from '../components/SiteSidebar.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import '../styles/global.css';
+interface Props { title: string; description?: string; image?: string; type?: 'website' | 'article'; publishedTime?: string; modifiedTime?: string; noindex?: boolean; }
+---
+<!doctype html>
+<html lang="en">
+  <head><SeoHead {...Astro.props} /><script is:inline>document.documentElement.classList.add('js');</script><slot name="head" /></head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <SiteSidebar />
+    <div class="site-canvas">
+      <SiteHeader />
+      <main id="main-content" class="document" tabindex="-1"><slot /></main>
+      <SiteFooter />
+    </div>
+  </body>
+</html>

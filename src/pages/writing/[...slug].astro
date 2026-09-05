@@ -1,0 +1,15 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { isPublishedWriting } from '../../lib/content';
+export async function getStaticPaths(){return (await getCollection('writing',({data})=>isPublishedWriting(data))).map(entry=>({params:{slug:entry.id},props:{entry}}));}
+const {entry}=Astro.props;
+const {Content}=await render(entry);
+const published=entry.data.publishedDate!;
+const structured={ '@context':'https://schema.org','@type':'Article',headline:entry.data.title,description:entry.data.summary,datePublished:published.toISOString(),dateModified:(entry.data.updatedDate||published).toISOString(),author:{'@type':'Person',name:'Matheus Odebrecht',url:'https://matheusode.me/about/'}};
+---
+<BaseLayout title={entry.data.seoTitle||entry.data.title} description={entry.data.seoDescription||entry.data.summary} type="article" publishedTime={published.toISOString()} modifiedTime={entry.data.updatedDate?.toISOString()}>
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(structured).replace(/</g,'\\u003c')} />
+  <header class="page-header"><a href="/writing/">← Writing</a><p class="eyebrow">{entry.data.tags.join(' · ')}</p><h1>{entry.data.title}</h1><p class="lead">{entry.data.summary}</p><time datetime={published.toISOString()}>{published.toLocaleDateString('en',{year:'numeric',month:'long',day:'numeric',timeZone:'UTC'})}</time></header>
+  <article class="prose"><Content /></article><section class="section"><a href="/contact/">Continue the conversation →</a></section>
+</BaseLayout>
