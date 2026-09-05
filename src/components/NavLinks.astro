@@ -1,10 +1,9 @@
 ---
 import { navigation } from '../config/site';
-const path = Astro.url.pathname;
 ---
 <ul class="nav-links">
-  {navigation.map(({ href, label, icon }) => (
-    <li><a href={href} aria-label={label} title={label} aria-current={(href === '/' ? path === '/' : path.startsWith(href)) ? 'page' : undefined}>
+  {navigation.map(({ href, section, label, icon }) => (
+    <li><a href={href} data-section-link={section} aria-label={label} title={label}>
       <span class="nav-icon" aria-hidden="true">{icon}</span><span class="nav-label">{label}</span>
     </a></li>
   ))}

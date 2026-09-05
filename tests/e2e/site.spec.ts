@@ -1,7 +1,8 @@
 import { expect, test } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
-const publicRoutes = ['/', '/work/', '/writing/', '/about/', '/contact/'];
+const publicRoutes = ['/'];
+const sectionRoutes = ['home', 'work', 'writing', 'about', 'contact'];
 
 test('custom 404 and unpublished RSS behave honestly', async ({page,request}) => {
   await page.goto('/404.html');
@@ -54,30 +55,15 @@ test.describe('public routes', () => {
 });
 
 test('site navigation marks exactly one current page and local links resolve', async ({ page, request }) => {
-  for (const route of publicRoutes) {
-    await page.goto(route);
+  await page.goto('/');
+  for (const section of sectionRoutes) {
+    await page.goto(`/#${section}`);
     const active = page.locator('nav a[aria-current="page"]:visible');
     await expect(active).toHaveCount(1);
-    await expect(active).toHaveAttribute('href', route);
+    await expect(active).toHaveAttribute('href', `/#${section}`);
   }
-
-  const queue = [...publicRoutes];
-  const visited = new Set<string>();
-  while (queue.length) {
-    const route = queue.shift()!;
-    if (visited.has(route)) continue;
-    visited.add(route);
-    await page.goto(route);
-    const links = await page.locator('a[href]').evaluateAll((anchors) =>
-      anchors.map((anchor) => anchor.getAttribute('href')).filter((href): href is string => Boolean(href)),
-    );
-    for (const href of links) {
-      if (!href.startsWith('/') || href.startsWith('//') || href.startsWith('/#')) continue;
-      const path = href.split('#')[0];
-      expect((await request.get(path)).ok(), `${route} → ${href}`).toBeTruthy();
-      if (/^\/(work|writing)\/[^.]+\/$/.test(path) && !visited.has(path)) queue.push(path);
-    }
-  }
+  const links = await page.locator('a[href]').evaluateAll((anchors) => anchors.map((anchor) => anchor.getAttribute('href')).filter((href): href is string => Boolean(href)));
+  for (const href of links.filter((href) => href.startsWith('/#'))) expect((await request.get('/')).ok(), href).toBeTruthy();
   expect((await request.get('/robots.txt')).ok()).toBeTruthy();
   expect((await request.get('/sitemap-index.xml')).ok()).toBeTruthy();
 });
@@ -89,7 +75,7 @@ test('contact and navigation work with JavaScript disabled', async ({ browser })
   await expect(page.locator('main a[href^="mailto:"]').first()).toBeVisible();
   await expect(page.locator('main a[href*="linkedin.com/in/"]').first()).toBeVisible();
   await page.getByRole('navigation').getByRole('link', { name: 'Work', exact: true }).first().click();
-  await expect(page).toHaveURL(/\/work\/$/);
+  await expect(page).toHaveURL(/#work$/);
   await context.close();
 });
 

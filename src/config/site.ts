@@ -14,9 +14,9 @@ export const site = {
 } as const;
 
 export const navigation = [
-  { href: '/', label: 'Home', icon: '⌂' },
-  { href: '/work/', label: 'Work', icon: '▧' },
-  { href: '/writing/', label: 'Writing', icon: '≡' },
-  { href: '/about/', label: 'About', icon: '◉' },
-  { href: '/contact/', label: 'Contact', icon: '↗' },
+  { href: '/#home', section: 'home', label: 'Home', icon: '⌂' },
+  { href: '/#work', section: 'work', label: 'Work', icon: '▧' },
+  { href: '/#writing', section: 'writing', label: 'Writing', icon: '≡' },
+  { href: '/#about', section: 'about', label: 'About', icon: '◉' },
+  { href: '/#contact', section: 'contact', label: 'Contact', icon: '↗' },
 ] as const;
