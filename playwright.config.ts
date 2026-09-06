@@ -14,7 +14,7 @@ export default defineConfig({
     { name: 'webkit', use: { ...devices['Desktop Safari'] } },
   ],
   webServer: {
-    command: 'node scripts/preview-test.mjs 4347',
+    command: 'node_modules/.bin/vite preview --host 127.0.0.1 --port 4347',
     url: 'http://127.0.0.1:4347',
     // Always test the freshly built static output, never a running dev server.
     reuseExistingServer: false,

@@ -31,7 +31,7 @@ jobs:
       - name: Build static site
         run: pnpm build
 
-      - name: Check Astro types and routes
+      - name: Check Svelte types and routes
         run: pnpm check
 
       - name: Lint source

@@ -1,7 +1,7 @@
 {
   "ci": {
     "collect": {
-      "startServerCommand": "node scripts/preview-test.mjs 4322",
+      "startServerCommand": "node_modules/.bin/vite preview --host 127.0.0.1 --port 4322",
       "startServerReadyPattern": "4322",
       "url": ["http://127.0.0.1:4322/", "http://127.0.0.1:4322/work/", "http://127.0.0.1:4322/contact/"],
       "numberOfRuns": 3,

@@ -16,20 +16,17 @@ button { cursor: pointer; }
 .skip-link { position: fixed; top: .8rem; left: 1rem; transform: translateY(-200%); background: var(--text); color: var(--background); padding: .65rem 1rem; z-index: 100; border-radius: var(--radius); }
 .skip-link:focus { transform: none; }
 .site-canvas { margin-left: var(--sidebar-width); min-height: 100vh; }
-.document { width: min(100%, var(--content-width)); margin: 0 auto; padding: 5.5rem clamp(1.5rem, 4vw, 4.5rem) 2rem; min-height: calc(100vh - 8rem); }
+.document { width: min(100%, var(--content-width)); margin: 0 auto; padding: 4rem clamp(1.5rem, 4vw, 4.5rem) 2rem; min-height: calc(100vh - 8rem); }
 .page-header { max-width: 48rem; margin-bottom: 4rem; }
-.hero-header { position: relative; }
-.hero-motif { margin: 2.5rem 0 0; max-width: 34rem; opacity: .8; }
-.hero-motif img { display: block; width: 100%; height: auto; }
-.section { padding: 3.5rem 0; border-top: 1px solid var(--border); }
+.section { padding: 4.5rem 0; border-top: 1px solid var(--border); }
 .single-page-section { scroll-margin-top: 2rem; }
 .section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
 .section-heading h2 { margin: 0; }
 .actions { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem; margin-top: 2rem; }
 .button { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 1rem; padding: .65rem 1.1rem; text-decoration: none; border: 1px solid var(--border); border-radius: .4rem; font-weight: 500; transition: background var(--duration), border-color var(--duration); }
-.button.primary { background: var(--accent); border-color: var(--accent); color: var(--background); }
+.button.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 .button:hover { border-color: var(--accent); background: var(--accent-surface); color: var(--text); }
-.button.primary:hover { background: #c6ddf3; color: var(--background); }
+.button.primary:hover { background: #d5e9fb; color: var(--on-accent); }
 .text-link { color: var(--accent); display: inline-block; padding-block: .5rem; }
 .card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
 .card { border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; background: var(--surface); min-width: 0; }
@@ -39,6 +36,16 @@ button { cursor: pointer; }
 .split-section { display: grid; grid-template-columns: minmax(12rem, .8fr) minmax(0, 1.2fr); gap: 3rem; align-items: start; }
 .split-section h2 { max-width: 20rem; }
 .principles-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.credibility > h2 { max-width: 32rem; margin-bottom: 2.5rem; }
+.principles-grid .card { border: 0; border-left: 1px solid var(--border); background: transparent; border-radius: 0; padding: .5rem 1.5rem; }
+.principles-grid .eyebrow { margin-bottom: 1rem; }
+.principles-grid .card p:last-child { margin-bottom: 0; }
+.contact-options { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+#contact { margin-top: 1.5rem; padding: clamp(1.5rem, 4vw, 3rem); border: 1px solid var(--border); border-radius: 1rem; background: var(--surface); }
+#contact h2 { max-width: 35rem; font-size: clamp(2rem, 3vw, 3.5rem); }
+#contact .card { padding: 1.25rem 0; border: 0; border-top: 1px solid var(--border); border-radius: 0; }
+#contact .button { overflow-wrap: anywhere; }
+@media (min-width: 768px) and (max-width: 1100px) { .principles-grid, .contact-options { grid-template-columns: 1fr; } }
 .contact-links p { display: flex; flex-wrap: wrap; gap: .75rem; }
 .metadata { color: var(--text-secondary); font-size: .85rem; }
 .tag { display: inline-block; color: var(--text-secondary); font-size: .8rem; margin: .25rem .5rem .25rem 0; }

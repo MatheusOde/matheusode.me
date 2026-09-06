@@ -1,9 +1,0 @@
----
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { site } from '../config/site';
----
-<BaseLayout title="Contact" description="Contact Matheus Odebrecht about full-stack applications, systems integration, and complex business needs.">
-  <header class="page-header"><p class="eyebrow">Contact / Start a conversation</p><h1>Bring the context, not a perfect brief.</h1><p class="lead">If a business process is being held together by disconnected systems, unclear data, or too many handoffs, we should talk.</p></header>
-  <section class="section contact-options" aria-labelledby="contact-options-title"><p class="eyebrow">Useful starting points</p><h2 id="contact-options-title">What to include</h2><div class="card-grid"><article class="card"><h3>The problem</h3><p>What is difficult, slow, fragile, or unclear today?</p></article><article class="card"><h3>The systems</h3><p>Which applications, data sources, and people are involved?</p></article><article class="card"><h3>The outcome</h3><p>What would need to be different for the work to be valuable?</p></article></div></section>
-  <section class="section contact-links" aria-labelledby="contact-links-title"><p class="eyebrow">Direct contact</p><h2 id="contact-links-title">Choose the channel that suits you.</h2><p><a class="button primary" href={`mailto:${site.email}`} data-event="email_contact_clicked">Email {site.email} <span aria-hidden="true">↗</span></a> <a class="button" href={site.linkedin} data-event="linkedin_clicked">LinkedIn <span aria-hidden="true">↗</span></a></p></section>
-</BaseLayout>

@@ -1,9 +1,0 @@
----
-import { getCollection } from 'astro:content';
-import { isPublishedWork, sortByPublishedDate } from '../lib/content';
-const entries = sortByPublishedDate(await getCollection('work', ({data}) => isPublishedWork(data)));
----
-<section id="work" class="section single-page-section" aria-labelledby="work-title">
-  <header class="section-heading"><div><p class="eyebrow">Work / Systems in context</p><h2 id="work-title">Software is part of a bigger system.</h2></div></header>
-  {entries.length > 0 ? <div class="card-grid">{entries.map(entry => <article class="card"><p class="eyebrow">{entry.data.problemDomain}</p><h3><a href={`/work/${entry.id}/`} data-event="work_case_opened">{entry.data.title}</a></h3><p>{entry.data.summary}</p><p>{entry.data.role}</p></article>)}</div> : <div class="prose empty-state"><h3>Start with the problem.</h3><p>If you are evaluating a full-stack application or an integration between business systems, tell me what needs to work together and what is getting in the way.</p><p>For work-specific context, <a href="#contact">start a conversation</a>. Confidential details belong in the right conversation.</p></div>}
-</section>

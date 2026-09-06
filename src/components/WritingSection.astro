@@ -1,9 +1,0 @@
----
-import { getCollection } from 'astro:content';
-import { isPublishedWriting, sortByPublishedDate } from '../lib/content';
-const entries = sortByPublishedDate(await getCollection('writing', ({data}) => isPublishedWriting(data)));
----
-<section id="writing" class="section single-page-section" aria-labelledby="writing-title">
-  <header class="section-heading"><div><p class="eyebrow">Writing / Ideas in practice</p><h2 id="writing-title">Good questions. Better systems.</h2></div></header>
-  {entries.length > 0 ? <div class="card-grid">{entries.map(entry => <article class="card"><p class="eyebrow">{entry.data.tags.join(' · ')}</p><h3><a href={`/writing/${entry.id}/`} data-event="article_opened">{entry.data.title}</a></h3><p>{entry.data.summary}</p></article>)}</div> : <div class="prose empty-state"><h3>A space for considered ideas.</h3><p>There are no published articles here yet.</p><p>Have a question about an integration or an engineering decision? <a href="#contact">I would be glad to hear it.</a></p></div>}
-</section>

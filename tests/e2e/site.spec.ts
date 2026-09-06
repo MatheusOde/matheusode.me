@@ -4,11 +4,12 @@ import AxeBuilder from '@axe-core/playwright';
 const publicRoutes = ['/'];
 const sectionRoutes = ['home', 'work', 'writing', 'about', 'contact'];
 
-test('custom 404 and unpublished RSS behave honestly', async ({page,request}) => {
+test('custom 404 and empty RSS behave honestly', async ({page,request}) => {
   await page.goto('/404.html');
   await expect(page.locator('main h1')).toBeVisible();
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content','noindex');
-  expect((await request.get('/rss.xml')).status()).toBe(404);
+  expect((await request.get('/rss.xml')).status()).toBe(200);
+  expect(await (await request.get('/rss.xml')).text()).toContain('<rss');
 });
 
 test('reduced motion removes UI transitions', async ({page}) => {
@@ -65,7 +66,7 @@ test('site navigation marks exactly one current page and local links resolve', a
   const links = await page.locator('a[href]').evaluateAll((anchors) => anchors.map((anchor) => anchor.getAttribute('href')).filter((href): href is string => Boolean(href)));
   for (const href of links.filter((href) => href.startsWith('/#'))) expect((await request.get('/')).ok(), href).toBeTruthy();
   expect((await request.get('/robots.txt')).ok()).toBeTruthy();
-  expect((await request.get('/sitemap-index.xml')).ok()).toBeTruthy();
+  expect((await request.get('/sitemap.xml')).ok()).toBeTruthy();
 });
 
 test('contact and navigation work with JavaScript disabled', async ({ browser }) => {

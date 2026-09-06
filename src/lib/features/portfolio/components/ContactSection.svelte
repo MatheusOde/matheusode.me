@@ -1,0 +1,14 @@
+<script lang="ts">
+  import { site } from '$lib/config/site';
+</script>
+
+<section id="contact" class="section single-page-section" aria-labelledby="contact-title">
+  <header class="section-heading"><div><p class="eyebrow">Contact / Start a conversation</p><h2 id="contact-title">Bring the context, not a perfect brief.</h2></div></header>
+  <p class="lead">If a business process is being held together by disconnected systems, unclear data, or too many handoffs, we should talk.</p>
+  <div class="card-grid contact-options">
+    <article class="card"><h3>The problem</h3><p>What is difficult, slow, fragile, or unclear today?</p></article>
+    <article class="card"><h3>The systems</h3><p>Which applications, data sources, and people are involved?</p></article>
+    <article class="card"><h3>The outcome</h3><p>What would need to be different for the work to be valuable?</p></article>
+  </div>
+  <p class="actions"><a class="button primary" href={`mailto:${site.email}`} data-event="email_contact_clicked">Email {site.email} <span aria-hidden="true">↗</span></a><a class="button" href={site.linkedin} data-event="linkedin_clicked">LinkedIn <span aria-hidden="true">↗</span></a></p>
+</section>
