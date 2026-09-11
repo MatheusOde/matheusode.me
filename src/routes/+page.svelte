@@ -4,6 +4,7 @@
   import ContactSection from '$lib/features/portfolio/components/ContactSection.svelte';
   import HeroSection from '$lib/features/portfolio/components/HeroSection.svelte';
   import PrinciplesSection from '$lib/features/portfolio/components/PrinciplesSection.svelte';
+  import Tesseract from '$lib/features/portfolio/components/Tesseract.svelte';
   import WorkSection from '$lib/features/portfolio/components/WorkSection.svelte';
   import WritingSection from '$lib/features/portfolio/components/WritingSection.svelte';
   import { site } from '$lib/config/site';
@@ -11,6 +12,7 @@
 
 <SeoHead title="Home" description={site.description} />
 <HeroSection />
+<Tesseract />
 <PrinciplesSection />
 <WorkSection />
 <WritingSection />

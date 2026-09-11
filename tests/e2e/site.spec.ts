@@ -141,3 +141,50 @@ test('no analytics traffic is emitted when analytics is disabled', async ({ page
   await expect(page.locator('main')).toBeVisible();
   expect(external).toEqual([]);
 });
+
+test.describe('background tesseract', () => {
+  const canvas = '.tesseract-canvas';
+
+  test('renders as a blurred, non-interactive fixed background', async ({ page }) => {
+    await page.goto('/');
+    const element = page.locator(canvas);
+    await expect(element).toBeAttached();
+    expect(await element.evaluate((node) => getComputedStyle(node).position)).toBe('fixed');
+    expect(await element.evaluate((node) => getComputedStyle(node).pointerEvents)).toBe('none');
+    expect(await element.evaluate((node) => getComputedStyle(node).filter)).toContain('blur');
+    await expect(element).toHaveAttribute('aria-hidden', 'true');
+    expect(await element.evaluate((node) => (node as HTMLCanvasElement).width)).toBeGreaterThan(0);
+    await expect(page.locator('.tesseract-controls')).toHaveCount(0);
+    await expect(page.locator('input[type="range"]')).toHaveCount(0);
+  });
+
+  test('moving the mouse changes the rendered canvas', async ({ page }) => {
+    await page.setViewportSize({ width: 1024, height: 720 });
+    await page.goto('/');
+    const before = await page.locator(canvas).evaluate((node) => (node as HTMLCanvasElement).toDataURL());
+    await page.mouse.move(120, 120);
+    await page.mouse.move(900, 600, { steps: 12 });
+    await page.waitForTimeout(400);
+    const after = await page.locator(canvas).evaluate((node) => (node as HTMLCanvasElement).toDataURL());
+    expect(after).not.toBe(before);
+  });
+
+  test('reduced motion renders the background without animation errors', async ({ page }) => {
+    const errors: string[] = [];
+    page.on('pageerror', (error) => errors.push(error.message));
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto('/');
+    await expect(page.locator(canvas)).toBeAttached();
+    expect(errors).toEqual([]);
+  });
+
+  test('repeated navigation does not leave animation errors behind', async ({ page }) => {
+    const errors: string[] = [];
+    page.on('pageerror', (error) => errors.push(error.message));
+    await page.goto('/');
+    await page.goto('/work/');
+    await page.goto('/');
+    await expect(page.locator(canvas)).toBeAttached();
+    expect(errors).toEqual([]);
+  });
+});
